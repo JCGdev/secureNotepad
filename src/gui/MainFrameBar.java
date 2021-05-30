@@ -2,9 +2,11 @@ package gui;
 
 import java.awt.event.ActionEvent;
 
+
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -22,12 +24,16 @@ public class MainFrameBar extends JMenuBar {
 	private JMenuItem settingsMenuItem;
 	private JMenuItem helpMenuItem;
 	
+	private ImageIcon noteIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/note.png");
+	private ImageIcon settingsIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/cmd.png");
+	private ImageIcon helpIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/help.png");
+	
 	public MainFrameBar() {
 		
 		this.optionsMenu = new JMenu("Options");
-		this.createNoteMenuItem = new JMenuItem("Create note");
-		this.settingsMenuItem = new JMenuItem("Settings");
-		this.helpMenuItem = new JMenuItem("Help");
+		this.createNoteMenuItem = new JMenuItem("New note", noteIcon);
+		this.settingsMenuItem = new JMenuItem("Settings", settingsIcon);
+		this.helpMenuItem = new JMenuItem("Help", helpIcon);
 		
 		
 		this.createNoteMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));

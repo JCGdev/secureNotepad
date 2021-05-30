@@ -3,6 +3,8 @@ package gui;
 import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
@@ -16,6 +18,10 @@ public class MainPanelContextMenu extends JPopupMenu {
 	JMenuItem createNoteItem = new JMenuItem("New note");
 	JMenuItem refreshMenuItem = new JMenuItem("Refresh");
 	JMenuItem settingsMenuItem = new JMenuItem("Settings");
+	
+	private ImageIcon noteIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/note.png");
+	private ImageIcon refreshIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/refresh.png");
+	private ImageIcon settingsIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/cmd.png");
 
 
 	public MainPanelContextMenu() {
@@ -23,6 +29,10 @@ public class MainPanelContextMenu extends JPopupMenu {
 		this.createNoteItem.addActionListener(new NoteCreatorMenuCall());
 		this.refreshMenuItem.addActionListener(new RefreshCall());
 		this.settingsMenuItem.addActionListener(new SettingsMenuCall());
+		
+		this.createNoteItem.setIcon(this.noteIcon);
+		this.refreshMenuItem.setIcon(this.refreshIcon);
+		this.settingsMenuItem.setIcon(this.settingsIcon);
 		
 		
 		this.add(this.createNoteItem);

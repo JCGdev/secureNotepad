@@ -4,11 +4,13 @@ import java.awt.BorderLayout;
 
 
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -28,6 +30,7 @@ public class SettingsPanel extends JPanel {
 	private JFileChooser folderChooser = new JFileChooser();
 	private JLabel notesPathLabel = new JLabel("Notes Path");
 	private JButton notesPathChooserButton = new JButton("Choose folder");
+	private ImageIcon chooserButtonIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/folder.png");
 	private String notesPath;
 	
 	
@@ -40,6 +43,7 @@ public class SettingsPanel extends JPanel {
 		
 		this.titleLabel.setFont(new Font("Serif", Font.BOLD, 26));
 		this.notesPathLabel.setFont(new Font("Serif", Font.BOLD, 15));
+		this.notesPathChooserButton.setIcon(this.chooserButtonIcon);
 
 
 		this.folderChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);

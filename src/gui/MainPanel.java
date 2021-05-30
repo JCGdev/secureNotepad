@@ -4,11 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.io.File;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,6 +22,8 @@ import secureNotepad.NotesManager;
 public class MainPanel extends JPanel{
 
 	private JLabel titleLabel = new JLabel("SecureNotepad");
+	private JLabel titleIconLabel = new JLabel();
+	
 	private static JPanel buttonsPanel = new JPanel();
 	
 	private static File[] fileNotes = NotesManager.getNotesInPath();
@@ -26,12 +31,16 @@ public class MainPanel extends JPanel{
 	
 	private JButton refreshButton = new JButton("Refresh");
 	
+	private ImageIcon titleIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/title.png");
+	private ImageIcon refreshIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/refresh.png");
 	
 	public MainPanel() {
 		
 		
 		this.setLayout(new BorderLayout());
 		this.titleLabel.setFont(new Font("Serif", Font.BOLD, 26));
+		this.titleIconLabel.setIcon(titleIcon);
+		this.refreshButton.setIcon(this.refreshIcon);
 		
 		this.setComponentPopupMenu(new MainPanelContextMenu());
 		
@@ -42,7 +51,7 @@ public class MainPanel extends JPanel{
 		addButtonsToPanel();
 		
 		
-		this.add(utils.InstancesUtil.getJPanelInstance(this.titleLabel), BorderLayout.NORTH);
+		this.add(utils.InstancesUtil.getJPanelInstance(this.titleLabel, this.titleIconLabel), BorderLayout.NORTH);
 		this.add(buttonsPanel, BorderLayout.CENTER);
 		this.add(utils.InstancesUtil.getJPanelInstance(this.refreshButton), BorderLayout.SOUTH);
 		
@@ -114,12 +123,8 @@ public class MainPanel extends JPanel{
 		
 		repaintButtonsPanel();
 
-	}
-	
-	
-	
-	
-	
+	}		
+		
 	
 	// -------------------------- Listener private class ---------------------------------------
 	

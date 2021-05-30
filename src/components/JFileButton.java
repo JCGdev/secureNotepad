@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import gui.NoteLoaderMenu.NoteLoaderGUI;
@@ -13,11 +14,13 @@ import utils.Preferences;
 public class JFileButton extends JButton{
 	
 	private File associatedFile;
+	private ImageIcon buttonIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/encrypted_note.png");
 	
 	public JFileButton(String name, File file) {
 		super(name);
 		this.associatedFile = file;
 		
+		this.setIcon(this.buttonIcon);
 		this.setToolTipText("Right click to manipulate the file");
 		
 		this.addActionListener(new NoteLoaderMenuCall());

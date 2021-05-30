@@ -9,6 +9,7 @@ import javax.swing.JPopupMenu;
 import gui.StaticMainPanel;
 import utils.Preferences;
 
+import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -20,13 +21,21 @@ public class JFileButtonContextMenu extends JPopupMenu {
 	JMenuItem deleteNoteItem = new JMenuItem("delete");
 	JMenuItem renameFileItem = new JMenuItem("rename");
 	
+	private ImageIcon optionsIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/settings2.png");
+	private ImageIcon deleteIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/bin.png");
+	private ImageIcon renameIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/rename.png");
+	
 	public JFileButtonContextMenu(File file){
+		
+		this.OptionsMenu.setIcon(this.optionsIcon);
+		this.deleteNoteItem.setIcon(this.deleteIcon);
+		this.renameFileItem.setIcon(this.renameIcon);
 		
 		this.OptionsMenu.add(this.deleteNoteItem);
 		this.OptionsMenu.add(this.renameFileItem);
 		
-		this.add(this.OptionsMenu)
-		;
+		
+		this.add(this.OptionsMenu);
 		this.associatedFile = file;
 		
 		this.deleteNoteItem.addActionListener(new DeleteNoteCall());

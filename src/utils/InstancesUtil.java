@@ -20,6 +20,14 @@ public class InstancesUtil {
 		return instance;
 	}
 	
+	public static JPanel getJPanelInstance(Component component, Component component2) {
+		
+		JPanel instance = new JPanel();
+		instance.add(component);
+		instance.add(component2);
+		return instance;
+	}
+	
 	public static JPanel getJPanelInstance(Component[] componentsArray) {
 		
 		JPanel instance = new JPanel();
