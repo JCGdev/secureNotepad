@@ -18,8 +18,6 @@ The notes created with this program, will follow this order:
 
 [ Salt - IV - Ciphertext ]
 
-- In case of getting bytecode errors, compile it yourself on eclipse
-
 ## Setup
 
 When executing the program, an config file be created. It's stored in:
@@ -32,7 +30,7 @@ When executing the program, an config file be created. It's stored in:
 
 ## TODO
 
-- Add icons and dark mode
+- Add dark mode
 
 - Improve functionality
 
