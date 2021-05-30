@@ -10,30 +10,31 @@ A notepad with AES integration, written in Java
 
 ## General info
 
->- In this proyect, AES CBC is the encryption method. There is an obfuscation method: 
+In this proyect, the encryption algorithm being used is AES CBC 
 
->- Furthermore, there is an obfuscation method, PBKDF2 key derivation (With HMAC Sha256). Password is hashed 65.000 times
+Furthermore, there is an obfuscation method, PBKDF2 key derivation (With HMAC Sha256). Password is hashed 65.000 times
 
->- The notes created with this program, will follow this order:
+The notes created with this program, will follow this order:
 
->- [ Salt - IV - Ciphertext ]
+[ Salt - IV - Ciphertext ]
 
+- In case of getting bytecode errors, compile it yourself on eclipse
 
 ## Setup
 
->- When executing the program, an config file be created. It's stored in:
+When executing the program, an config file be created. It's stored in:
 
->- Linux --> ~/.config/secureNotepad/config.conf
+>Linux --> `~/.config/secureNotepad/config.conf`
 
->- Windows --> C:\\Users\\USER\\AppData\\Local\\secureNotepad\\config.conf
+>Windows --> `C:\\Users\\USER\\AppData\\Local\\secureNotepad\\config.conf`
 
 ![](example.png)
 
 ## TODO
 
->- Add icons and dark mode
+- Add icons and dark mode
 
->- Improve functionality
+- Improve functionality
 
 
 
