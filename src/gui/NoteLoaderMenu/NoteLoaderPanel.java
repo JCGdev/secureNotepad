@@ -15,31 +15,37 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class NoteLoaderPanel extends JPanel{
 
-		protected File associatedFile;
+		private File associatedFile;
 		
-		protected JLabel titleLabel = new JLabel("Note Loader");
-		protected Box mainBox = Box.createVerticalBox();
+		private JLabel titleLabel = new JLabel("Note Loader");
+		private Box mainBox = Box.createVerticalBox();
 		
-		protected Box nameBox = Box.createHorizontalBox();
-		protected JLabel noteNameLabel = new JLabel("Name");
-		protected JTextField noteNameTextField = new JTextField("example" , 5);
+		private Box nameBox = Box.createHorizontalBox();
+		private JLabel noteNameLabel = new JLabel("Name");
+		private JTextField noteNameTextField = new JTextField("example" , 5);
 		
-		protected Box passwordBox = Box.createHorizontalBox();
-		protected JLabel passwordLabel = new JLabel("Password");
-		protected JPasswordField passwordField = new JPasswordField(5);
+		private Box passwordBox = Box.createHorizontalBox();
+		private JLabel passwordLabel = new JLabel("Password");
+		private JPasswordField passwordField = new JPasswordField(5);
 		
-		protected Box noteDataBox = Box.createHorizontalBox();
-		protected JTextArea noteDataTextArea = new JTextArea(20, 50);
-		protected JScrollPane noteDataTextPane = new JScrollPane(noteDataTextArea);
+		private Box passwordRepeatBox = Box.createHorizontalBox();
+		private JLabel passwordRepeatLabel = new JLabel("Repeat password");
+		private JPasswordField passwordRepeatField = new JPasswordField(5);
 		
-		protected JCheckBox lineWrapCheckBox = new JCheckBox("Line wrap");
+		private Box noteDataBox = Box.createHorizontalBox();
+		private JTextArea noteDataTextArea = new JTextArea(20, 50);
+		private JScrollPane noteDataTextPane = new JScrollPane(noteDataTextArea);
 		
-		protected JPanel buttonsPanel = new JPanel();
-		protected JButton decryptButton = new JButton("Decrypt");
-		protected JButton saveChangesButton = new JButton("Save changes");
+		private JCheckBox lineWrapCheckBox = new JCheckBox("Line wrap");
+		
+		private JPanel buttonsPanel = new JPanel();
+		private JButton decryptButton = new JButton("Decrypt");
+		private JButton saveChangesButton = new JButton("Save changes");
 		
 
 		
@@ -49,6 +55,7 @@ public class NoteLoaderPanel extends JPanel{
 			this.setLayout(new BorderLayout());
 			
 			this.titleLabel.setFont(new Font("Serif", Font.BOLD, 26));
+			this.saveChangesButton.setEnabled(false);
 			this.noteNameTextField.setText(this.associatedFile.getName());
 			
 			this.lineWrapCheckBox.setSelected(true);
@@ -62,9 +69,15 @@ public class NoteLoaderPanel extends JPanel{
 			
 			// passswordBox (contais the field where the password is written)
 			this.passwordBox.add(this.passwordLabel);
-			this.passwordBox.add(Box.createHorizontalStrut(10));
+			this.passwordBox.add(this.getWhiteBox());
 			this.passwordBox.add(this.passwordField);
 			
+
+			//Repeat password box 
+			
+			this.passwordRepeatBox.add(this.passwordRepeatLabel);
+			this.passwordRepeatBox.add(this.getWhiteBox());
+			this.passwordRepeatBox.add(this.passwordRepeatField);
 			
 			// noteDataBox (contains the field where the note is written )
 			this.noteDataBox.add(this.noteDataTextPane);
@@ -76,6 +89,9 @@ public class NoteLoaderPanel extends JPanel{
 			this.mainBox.add(this.noteDataBox);
 			this.mainBox.add(this.getWhiteBox());
 			this.mainBox.add(this.passwordBox);
+			this.mainBox.add(this.getWhiteBox());
+			this.mainBox.add(this.passwordRepeatBox);
+			
 
 			// buttonsPanel (where the buttons are stored)
 			this.buttonsPanel.add(this.decryptButton);
@@ -100,30 +116,30 @@ public class NoteLoaderPanel extends JPanel{
 		}
 		
 
-		protected Box getWhiteBox() {
+		private Box getWhiteBox() {
 			
 			Box whiteBox = Box.createHorizontalBox();
 			whiteBox.add(new JLabel(" "));
 			return whiteBox;
 		}
 		
-		protected Box getMainBox() {
+		private Box getMainBox() {
 			return this.mainBox;
 		}
 		
-		protected JButton getSaveButton() {
+		private JButton getSaveButton() {
 			return this.decryptButton;
 		}
 		
-		protected String getNoteName() {
+		private String getNoteName() {
 			return this.noteNameTextField.getText();
 		}
 		
-		protected String getNoteText() {
+		private String getNoteText() {
 			return this.noteDataTextArea.getText();
 		}
 		
-		protected String getPassword() {
+		private String getPassword() {
 			return new String(this.passwordField.getPassword());
 		}
 		
@@ -132,12 +148,46 @@ public class NoteLoaderPanel extends JPanel{
 			
 		}
 		
+		private boolean passwordIsBlank() {
+			if(getPassword().isBlank() || getPassword().isEmpty()) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		private boolean noteTextIsBlank() {
+			if(getNoteText().isBlank() || getNoteText().isEmpty()) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		private boolean passwordIsNotBlank() {
+			return !passwordIsBlank();
+		}
+		
+		private boolean noteTextIsNotBlank() {
+			return !noteTextIsBlank();
+		}	
+		
+		private boolean passwordIsWellWritten() {
+			String passwordField1 = new String(this.passwordField.getPassword());
+			String passwordField2 = new String(this.passwordRepeatField.getPassword());
+			
+			boolean status = passwordField1.equals(passwordField2);
+			
+			passwordField1 = null;
+			passwordField2 = null;
+			
+			return status;
+		}
 		
 		
+	// -------------------- Listener private class ---------------------------------------	
 		
-	// -------------------- Listener protected class ---------------------------------------	
-		
-	protected class CheckboxCall implements ActionListener {
+	private class CheckboxCall implements ActionListener {
 
 		public CheckboxCall() {}
 			
@@ -156,7 +206,7 @@ public class NoteLoaderPanel extends JPanel{
 		
 	// ------------------------------------------------------------------------------------
 		
-	// -------------------- Listener protected class ---------------------------------------	
+	// -------------------- Listener private class ---------------------------------------	
 		
 		private class saveButtonPressedCall implements ActionListener {
 
@@ -164,18 +214,27 @@ public class NoteLoaderPanel extends JPanel{
 				
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					
-				String originalText = utils.FileIOUtil.readFileContentAsString(associatedFile.getAbsolutePath());
-				String editedText = getNoteText();
-				
-				String cipherText = utils.CryptUtil.encryptWithCBCMode(editedText.getBytes(),
-																	   getPassword().toCharArray());
-				
 
-				utils.FileIOUtil.writeTextToFile(cipherText, associatedFile.getAbsolutePath());
-				JOptionPane.showMessageDialog(null, "Note saved!");
+				if(passwordIsNotBlank() && noteTextIsNotBlank()) {
 					
-					
+					if(passwordIsWellWritten()) {
+				
+							String originalText = utils.FileIOUtil.readFileContentAsString(associatedFile.getAbsolutePath());
+							String editedText = getNoteText();
+				
+				
+							String cipherText = utils.CryptUtil.encryptWithCBCMode(editedText.getBytes(),
+																	   getPassword().toCharArray());	
+
+							utils.FileIOUtil.writeTextToFile(cipherText, associatedFile.getAbsolutePath());
+							JOptionPane.showMessageDialog(null, "Note saved and encrypted!");
+
+					} else {
+						utils.ErrorUtil.showErrorMessage("Password doesn't match");
+					}
+				} else {
+					utils.ErrorUtil.showErrorMessage("Provided data can't be blank");
+				}
 					
 			}
 					
@@ -192,23 +251,65 @@ public class NoteLoaderPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				String fileContent = utils.FileIOUtil.readFileContentAsString(associatedFile.getAbsolutePath()).trim();
+				if(passwordIsNotBlank() && noteTextIsNotBlank()) {
+					
+					if(passwordIsWellWritten()) {
+				
+						String fileContent = utils.FileIOUtil.readFileContentAsString(associatedFile.getAbsolutePath()).trim();
 
-				String encodedSalt = fileContent.substring(0, 24); // salt 16 bytes (24 encoded)
-				String encodedIV = fileContent.substring(24, 48); // iv 16 bytes (24 encoded)
-				String encodedCiphertext = fileContent.substring(48, fileContent.length());
+						String encodedSalt = fileContent.substring(0, 24); // salt 16 bytes (24 encoded)
+						String encodedIV = fileContent.substring(24, 48); // iv 16 bytes (24 encoded)
+						String encodedCiphertext = fileContent.substring(48, fileContent.length());
 				
 				
-				String plaintext = utils.CryptUtil.decryptWithCBCMode(encodedCiphertext, getPassword().toCharArray(),
+						String plaintext = utils.CryptUtil.decryptWithCBCMode(encodedCiphertext, getPassword().toCharArray(),
 																	  encodedSalt, encodedIV);
 
-				noteDataTextArea.setText(plaintext);
+						noteDataTextArea.setText(plaintext);
+						noteDataTextArea.getDocument().addDocumentListener(new TextFieldListener());
+						
 				
+					} else {
+						utils.ErrorUtil.showErrorMessage("Password doesn't match");
+					}
+				} else {
+					utils.ErrorUtil.showErrorMessage("Provided data can't be blank");
+				}
+						
 			}
 				
 		}
 		
 		// ------------------------------------------------------------------------------------
+		
+		
+		// -------------------- Listener private class ---------------------------------------	
+		
+				private class TextFieldListener implements DocumentListener {
+
+					public TextFieldListener() {}
+
+					@Override
+					public void insertUpdate(DocumentEvent e) {
+						saveChangesButton.setEnabled(true);
+						
+					}
+
+					@Override
+					public void removeUpdate(DocumentEvent e) {
+						saveChangesButton.setEnabled(true);
+						
+					}
+
+					@Override
+					public void changedUpdate(DocumentEvent e) {
+						
+						
+					}
+						
+					
+							
+				}
 		
 
 }

@@ -39,7 +39,7 @@ public class NoteCreatorPanel extends JPanel{
 	private JLabel passwordLabel = new JLabel("Password");
 	private JPasswordField passwordField = new JPasswordField(5);
 	
-	private Box repeatPasswordBox = Box.createHorizontalBox();
+	private Box passwordRepeatBox = Box.createHorizontalBox();
 	private JLabel passwordRepeatLabel = new JLabel("Repeat password");
 	private JPasswordField passwordRepeatField = new JPasswordField(5);
 	
@@ -59,7 +59,7 @@ public class NoteCreatorPanel extends JPanel{
 
 		// nameBbox (contains the name input box)
 		this.nameBox.add(this.noteNameLabel);
-		this.nameBox.add(Box.createHorizontalStrut(10));
+		this.nameBox.add(this.getWhiteBox());
 		this.nameBox.add(this.noteNameTextField);
 		
 		// noteDataBox (contains the field where the note is written )
@@ -67,14 +67,14 @@ public class NoteCreatorPanel extends JPanel{
 		
 		// passswordBox (contais the field where the password is written)
 		this.passwordBox.add(this.passwordLabel);
-		this.passwordBox.add(Box.createHorizontalStrut(10));
+		this.passwordBox.add(this.getWhiteBox());
 		this.passwordBox.add(this.passwordField);
 		
 		//Repeat password box 
 		
-		this.repeatPasswordBox.add(this.passwordRepeatLabel);
-		this.repeatPasswordBox.add(Box.createHorizontalStrut(10));
-		this.repeatPasswordBox.add(this.passwordRepeatField);
+		this.passwordRepeatBox.add(this.passwordRepeatLabel);
+		this.passwordRepeatBox.add(this.getWhiteBox());
+		this.passwordRepeatBox.add(this.passwordRepeatField);
 		
 		// mainBox (contais all the boxes)
 		this.mainBox.add(this.nameBox);
@@ -83,7 +83,7 @@ public class NoteCreatorPanel extends JPanel{
 		this.mainBox.add(this.getWhiteBox());
 		this.mainBox.add(this.passwordBox);
 		this.mainBox.add(this.getWhiteBox());
-		this.mainBox.add(this.repeatPasswordBox);
+		this.mainBox.add(this.passwordRepeatBox);
 
 	
 		

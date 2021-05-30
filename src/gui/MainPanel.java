@@ -9,11 +9,11 @@ import java.awt.event.ActionListener;
 
 import java.io.File;
 
-import components.JFileButton;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import components.JFileButton;
 import secureNotepad.NotesManager;
 
 public class MainPanel extends JPanel{

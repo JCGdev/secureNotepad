@@ -249,7 +249,7 @@ public class CryptUtil {
 		    plainText = cipher.doFinal(decodedCiphertext);
 		    
 		   
-		} catch(Exception e) {utils.ErrorUtil.showErrorMessage("Eror decrypting the note", e);}
+		} catch(Exception e) {utils.ErrorUtil.showErrorMessage("Error decrypting the note", e);}
 	
 		password = null;
 		
