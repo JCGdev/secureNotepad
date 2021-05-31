@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 
@@ -30,11 +31,22 @@ public class MainFrameBar extends JMenuBar {
 	
 	public MainFrameBar() {
 		
+		this.setBackground(new Color(112, 120, 130));
+		
 		this.optionsMenu = new JMenu("Options");
 		this.createNoteMenuItem = new JMenuItem("New note", noteIcon);
 		this.settingsMenuItem = new JMenuItem("Settings", settingsIcon);
 		this.helpMenuItem = new JMenuItem("Help", helpIcon);
 		
+		this.optionsMenu.setForeground(Color.WHITE);
+		
+		this.createNoteMenuItem.setBackground(new Color(97, 102, 109));
+		this.settingsMenuItem.setBackground(new Color(97, 102, 109));
+		this.helpMenuItem.setBackground(new Color(97, 102, 109));
+		
+		this.createNoteMenuItem.setForeground(Color.WHITE);
+		this.settingsMenuItem.setForeground(Color.WHITE);
+		this.helpMenuItem.setForeground(Color.WHITE);
 		
 		this.createNoteMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
 		this.settingsMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
@@ -48,6 +60,7 @@ public class MainFrameBar extends JMenuBar {
 		this.optionsMenu.add(this.createNoteMenuItem);
 		this.optionsMenu.add(this.settingsMenuItem);
 		this.optionsMenu.add(this.helpMenuItem);
+		
 		this.add(this.optionsMenu);
 		
 

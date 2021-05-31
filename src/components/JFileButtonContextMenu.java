@@ -1,5 +1,6 @@
 package components;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
 public class JFileButtonContextMenu extends JPopupMenu {
 
 	File associatedFile;
-	JMenu OptionsMenu = new JMenu("Options");
+	JMenu optionsMenu = new JMenu("Options");
 	JMenuItem deleteNoteItem = new JMenuItem("delete");
 	JMenuItem renameFileItem = new JMenuItem("rename");
 	
@@ -27,15 +28,30 @@ public class JFileButtonContextMenu extends JPopupMenu {
 	
 	public JFileButtonContextMenu(File file){
 		
-		this.OptionsMenu.setIcon(this.optionsIcon);
+		
+		this.optionsMenu.setIcon(this.optionsIcon);
 		this.deleteNoteItem.setIcon(this.deleteIcon);
 		this.renameFileItem.setIcon(this.renameIcon);
 		
-		this.OptionsMenu.add(this.deleteNoteItem);
-		this.OptionsMenu.add(this.renameFileItem);
+		// --------------- Dark MODE ----------------------------------------
+		
+		this.setBackground(new Color(97, 102, 109));
+		
+		this.optionsMenu.setBackground(new Color(97, 102, 109));
+		this.deleteNoteItem.setBackground(new Color(97, 102, 109));
+		this.renameFileItem.setBackground(new Color(97, 102, 109));
+		
+		this.optionsMenu.setForeground(Color.WHITE);
+		this.deleteNoteItem.setForeground(Color.WHITE);
+		this.renameFileItem.setForeground(Color.WHITE);
+
+		// ------------------------------------------------------------------
+		
+		this.optionsMenu.add(this.deleteNoteItem);
+		this.optionsMenu.add(this.renameFileItem);
 		
 		
-		this.add(this.OptionsMenu);
+		this.add(this.optionsMenu);
 		this.associatedFile = file;
 		
 		this.deleteNoteItem.addActionListener(new DeleteNoteCall());

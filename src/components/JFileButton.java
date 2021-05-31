@@ -1,5 +1,6 @@
 package components;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
@@ -19,6 +20,9 @@ public class JFileButton extends JButton{
 	public JFileButton(String name, File file) {
 		super(name);
 		this.associatedFile = file;
+		
+		this.setBackground(new Color(97, 102, 109));
+		this.setForeground(Color.WHITE);
 		
 		this.setIcon(this.buttonIcon);
 		this.setToolTipText("Right click to manipulate the file");

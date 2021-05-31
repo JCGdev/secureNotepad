@@ -21,7 +21,10 @@ public class FileIOUtil {
 			File fileToRead = new File(path);
 			fileToRead.createNewFile();
 			
-		} catch(Exception e) {utils.ErrorUtil.showErrorMessage("failed creating file", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error creating the file at path: " + path,
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 		
 	}
 		
@@ -34,7 +37,10 @@ public class FileIOUtil {
 		try {
 			fileToRead = new File(path);
 			
-		} catch(Exception e) {utils.ErrorUtil.showErrorMessage("failed creating folder", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error creating the folder at path: " + path,
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 		
 		return fileToRead;
 	}
@@ -46,7 +52,10 @@ public class FileIOUtil {
 			File fileToRead = new File(path);
 			fileToRead.mkdirs();
 			
-		} catch(Exception e) {utils.ErrorUtil.showErrorMessage("failed creating file", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error creating the folder at path: " + path,
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 		
 		
 	}
@@ -138,7 +147,10 @@ public class FileIOUtil {
 			fileToRead = readFile(path);
 			fileBytes = Files.readAllBytes(fileToRead.toPath());
 
-		} catch (Exception e) {utils.ErrorUtil.showErrorMessage("Error reading file btyes", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error reading the bytes from the file: " + path,
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 	
 		return fileBytes;
 	}
@@ -153,7 +165,10 @@ public class FileIOUtil {
 		try {
 			fileBytes = Files.readAllBytes(file.toPath());
 
-		} catch (Exception e) {utils.ErrorUtil.showErrorMessage("Error reading file btyes", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error reading the bytes from the file: " + file.getAbsolutePath(),
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 	
 		return fileBytes;
 	}

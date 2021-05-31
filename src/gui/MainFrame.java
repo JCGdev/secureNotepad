@@ -18,6 +18,7 @@ public class MainFrame extends JFrame{
 		this.setIconImage(frameIcon);
 		this.setJMenuBar(new MainFrameBar());
 		
+		
 		this.add(StaticMainPanel.getInstance());
 	}
 	

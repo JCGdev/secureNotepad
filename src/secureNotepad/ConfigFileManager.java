@@ -209,7 +209,7 @@ public class ConfigFileManager {
 					
 				}catch(IndexOutOfBoundsException e) {	// in case some configs are missings
 					utils.FileIOUtil.deleteFile(UNIX_CONFIG_FILE_PATH);
-					utils.ErrorUtil.showErrorMessage("Config file missing or config file corrupted. Please restart", e);
+					utils.MessageUtil.showMessage("Error","Config file missing or config file corrupted. Please restart", utils.MessageUtil.ROUNDED_ALERT);
 					
 					System.exit(0);
 				}
@@ -230,7 +230,7 @@ public class ConfigFileManager {
 				}catch(IndexOutOfBoundsException e) {	// in case some configs are missings
 					e.printStackTrace();
 					utils.FileIOUtil.deleteFile(WINDOWS_CONFIG_FILE_PATH);
-					utils.ErrorUtil.showErrorMessage("Config file missing or config file corrupted. Please restart", e);
+					utils.MessageUtil.showMessage("Error","Config file missing or config file corrupted. Please restart", utils.MessageUtil.ROUNDED_ALERT);
 					
 					System.exit(0);
 				}

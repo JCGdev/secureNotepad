@@ -2,6 +2,8 @@ package utils;
 
 import java.awt.Component;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class InstancesUtil {
@@ -17,6 +19,8 @@ public class InstancesUtil {
 		
 		JPanel instance = new JPanel();
 		instance.add(component);
+		instance.setOpaque(false);
+		
 		return instance;
 	}
 	
@@ -25,8 +29,36 @@ public class InstancesUtil {
 		JPanel instance = new JPanel();
 		instance.add(component);
 		instance.add(component2);
+		instance.setOpaque(false);
+		
 		return instance;
 	}
+	
+	public static JPanel getJPanelInstance(ImageIcon icon, Component component2) {
+		
+		JPanel instance = new JPanel();
+		JLabel iconLabel = new JLabel();
+		iconLabel.setIcon(icon);
+		
+		instance.add(iconLabel);
+		instance.add(component2);
+		instance.setOpaque(false);
+		
+		return instance;
+	}
+	
+	public static JPanel getJPanelInstance(ImageIcon icon) {
+		
+		JPanel instance = new JPanel();
+		JLabel iconLabel = new JLabel();
+		iconLabel.setIcon(icon);
+		
+		instance.add(iconLabel);
+		instance.setOpaque(false);
+		
+		return instance;
+	}
+	
 	
 	public static JPanel getJPanelInstance(Component[] componentsArray) {
 		

@@ -1,6 +1,7 @@
 package gui.NoteLoaderMenu;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +18,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
+import gui.message.MessageGUI;
 
 public class NoteLoaderPanel extends JPanel{
 
@@ -43,7 +46,6 @@ public class NoteLoaderPanel extends JPanel{
 		
 		private JCheckBox lineWrapCheckBox = new JCheckBox("Line wrap");
 		
-		private JPanel buttonsPanel = new JPanel();
 		private JButton decryptButton = new JButton("Decrypt");
 		private JButton saveChangesButton = new JButton("Save changes");
 		
@@ -53,6 +55,36 @@ public class NoteLoaderPanel extends JPanel{
 			
 			this.setAssociatedFile(file);
 			this.setLayout(new BorderLayout());
+			
+			// --------------- Dark MODE ----------------------------------------
+			
+			this.setBackground(new Color(41, 41, 41));
+			
+			this.titleLabel.setForeground(Color.WHITE);
+			this.noteNameLabel.setForeground(Color.WHITE);
+			this.passwordLabel.setForeground(Color.WHITE);
+			this.passwordRepeatLabel.setForeground(Color.WHITE);
+			
+			this.noteNameTextField.setBackground(new Color(97, 102, 109));
+			this.passwordField.setBackground(new Color(97, 102, 109));
+			this.passwordRepeatField.setBackground(new Color(97, 102, 109));
+			this.noteDataTextArea.setBackground(new Color(97, 102, 109));
+			
+			this.noteNameTextField.setForeground(Color.WHITE);
+			this.passwordField.setForeground(Color.WHITE);
+			this.passwordRepeatField.setForeground(Color.WHITE);
+			this.noteDataTextArea.setForeground(Color.WHITE);
+			
+			this.decryptButton.setBackground(new Color(97, 102, 109));
+			this.decryptButton.setForeground(Color.WHITE);
+			
+			this.saveChangesButton.setBackground(new Color(97, 102, 109));
+			this.saveChangesButton.setForeground(Color.WHITE);
+			
+			this.lineWrapCheckBox.setOpaque(false);
+			this.lineWrapCheckBox.setForeground(Color.WHITE);
+			
+			// --------------------------------------------------
 			
 			this.titleLabel.setFont(new Font("Serif", Font.BOLD, 26));
 			this.saveChangesButton.setEnabled(false);
@@ -92,14 +124,10 @@ public class NoteLoaderPanel extends JPanel{
 			this.mainBox.add(this.getWhiteBox());
 			this.mainBox.add(this.passwordRepeatBox);
 			
-
-			// buttonsPanel (where the buttons are stored)
-			this.buttonsPanel.add(this.decryptButton);
-			this.buttonsPanel.add(this.saveChangesButton);
 			
 			this.add(utils.InstancesUtil.getJPanelInstance(this.titleLabel), BorderLayout.NORTH);
 			this.add(utils.InstancesUtil.getJPanelInstance(this.mainBox), BorderLayout.CENTER);
-			this.add(this.buttonsPanel, BorderLayout.SOUTH);
+			this.add(utils.InstancesUtil.getJPanelInstance(this.decryptButton, this.saveChangesButton), BorderLayout.SOUTH);
 			this.add(utils.InstancesUtil.getJPanelInstance(this.lineWrapCheckBox), BorderLayout.WEST);
 			
 			
@@ -227,13 +255,15 @@ public class NoteLoaderPanel extends JPanel{
 																	   getPassword().toCharArray());	
 
 							utils.FileIOUtil.writeTextToFile(cipherText, associatedFile.getAbsolutePath());
-							JOptionPane.showMessageDialog(null, "Note saved and encrypted!");
+							utils.MessageUtil.showMessage("SUCCEEDED", "Note saved!", utils.MessageUtil.ROUNDED_TICK);
+							
+							
 
 					} else {
-						utils.ErrorUtil.showErrorMessage("Password doesn't match");
+						utils.MessageUtil.showMessage("ERROR","Password doesn't match", utils.MessageUtil.ROUNDED_DENIED);
 					}
 				} else {
-					utils.ErrorUtil.showErrorMessage("Provided data can't be blank");
+					utils.MessageUtil.showMessage("Error", "Provided data can't be blank", utils.MessageUtil.ROUNDED_DENIED);
 				}
 					
 			}
@@ -270,10 +300,10 @@ public class NoteLoaderPanel extends JPanel{
 						
 				
 					} else {
-						utils.ErrorUtil.showErrorMessage("Password doesn't match");
+						utils.MessageUtil.showMessage("ERROR","Password doesn't match", utils.MessageUtil.ROUNDED_DENIED);
 					}
 				} else {
-					utils.ErrorUtil.showErrorMessage("Provided data can't be blank");
+					utils.MessageUtil.showMessage("Error", "Provided data can't be blank", utils.MessageUtil.ROUNDED_DENIED);
 				}
 						
 			}

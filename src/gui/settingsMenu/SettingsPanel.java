@@ -1,8 +1,7 @@
 package gui.settingsMenu;
 
 import java.awt.BorderLayout;
-
-
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -45,7 +44,21 @@ public class SettingsPanel extends JPanel {
 		this.notesPathLabel.setFont(new Font("Serif", Font.BOLD, 15));
 		this.notesPathChooserButton.setIcon(this.chooserButtonIcon);
 
-
+		// --------------- Dark MODE ----------------------------------------
+		
+		this.setBackground(new Color(41, 41, 41));
+		
+		this.titleLabel.setForeground(Color.WHITE);
+		this.notesPathLabel.setForeground(Color.WHITE);
+		
+		this.notesPathChooserButton.setBackground(new Color(97, 102, 109));
+		this.notesPathChooserButton.setForeground(Color.WHITE);
+		
+		this.saveButton.setBackground(new Color(97, 102, 109));
+		this.saveButton.setForeground(Color.WHITE);
+		
+		// ------------------------------------------------------------------
+		
 		this.folderChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		
 		this.saveButton.addActionListener(new SettingsSaveButtonCall());

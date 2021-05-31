@@ -1,8 +1,7 @@
 package gui.NoteCreatorMenu;
 
 import java.awt.BorderLayout;
-
-
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -51,6 +50,33 @@ public class NoteCreatorPanel extends JPanel{
 	public NoteCreatorPanel() {
 		
 		this.setLayout(new BorderLayout());
+		
+		// --------------- Dark MODE ----------------------------------------
+		
+		this.setBackground(new Color(41, 41, 41));
+					
+		this.titleLabel.setForeground(Color.WHITE);
+		this.noteNameLabel.setForeground(Color.WHITE);
+		this.passwordLabel.setForeground(Color.WHITE);
+		this.passwordRepeatLabel.setForeground(Color.WHITE);
+					
+		this.noteNameTextField.setBackground(new Color(97, 102, 109));
+		this.passwordField.setBackground(new Color(97, 102, 109));
+		this.passwordRepeatField.setBackground(new Color(97, 102, 109));
+		this.noteDataTextArea.setBackground(new Color(97, 102, 109));
+					
+		this.noteNameTextField.setForeground(Color.WHITE);
+		this.passwordField.setForeground(Color.WHITE);
+		this.passwordRepeatField.setForeground(Color.WHITE);
+		this.noteDataTextArea.setForeground(Color.WHITE);
+		
+		this.saveNoteButton.setBackground(new Color(97, 102, 109));
+		this.saveNoteButton.setForeground(Color.WHITE);
+					
+		this.lineWrapCheckBox.setOpaque(false);
+		this.lineWrapCheckBox.setForeground(Color.WHITE);
+					
+		// --------------------------------------------------
 		
 		this.titleLabel.setFont(new Font("Serif", Font.BOLD, 26));
 		this.lineWrapCheckBox.setSelected(true);
@@ -214,15 +240,15 @@ public class NoteCreatorPanel extends JPanel{
 						utils.FileIOUtil.createFile(filePath);
 						utils.FileIOUtil.writeTextToFile(encodedCipherText, filePath);
 				
-						JOptionPane.showMessageDialog(null, "Note created!");
+						utils.MessageUtil.showMessage("SUCCEEDED","Note saved!", utils.MessageUtil.ROUNDED_TICK);
 						StaticMainPanel.getInstance().refreshNotes();
 					
 					} else {
-						utils.ErrorUtil.showErrorMessage("Password doesn't match");
+						utils.MessageUtil.showMessage("ERROR","Password doesn't match", utils.MessageUtil.ROUNDED_DENIED);
 					}
 				
 				} else {
-					utils.ErrorUtil.showErrorMessage("Provided data can't be blank");
+					utils.MessageUtil.showMessage("Error", "Provided data can't be blank", utils.MessageUtil.ROUNDED_DENIED);
 				}
 				
 				

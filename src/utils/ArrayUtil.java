@@ -12,7 +12,10 @@ public class ArrayUtil {
 		try {
 			splittedArray = Arrays.copyOfRange(array, initialPos, endPos);
 	
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Something gone wrong while splitting arrays", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Something gone wrong while splitting arrays",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 	
 		return splittedArray;
 	
@@ -25,7 +28,10 @@ public class ArrayUtil {
 		try {
 			splittedArray = Arrays.copyOfRange(array, initialPos, endPos);
 	
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Something gone wrong while splitting arrays", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Something gone wrong while splitting arrays",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 	
 		return splittedArray;
 		
@@ -38,7 +44,10 @@ public class ArrayUtil {
 		try {
 			splittedArray = Arrays.copyOfRange(array, initialPos, endPos);
 	
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Something gone wrong while splitting arrays", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Something gone wrong while splitting arrays",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 	
 		return splittedArray;
 	}
@@ -50,7 +59,10 @@ public class ArrayUtil {
 		try {
 			splittedArray = Arrays.copyOfRange(array, initialPos, endPos);
 	
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Something gone wrong while splitting arrays", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Something gone wrong while splitting arrays",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 	
 		return splittedArray.toString();
 	}
@@ -62,7 +74,10 @@ public class ArrayUtil {
 		try {
 			splittedArray = Arrays.copyOfRange(array, initialPos, endPos);
 	
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Something gone wrong while splitting arrays", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Something gone wrong while splitting arrays",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 	
 		return splittedArray;
 		
@@ -84,7 +99,10 @@ public class ArrayUtil {
 			System.arraycopy(array2, 0, resultingArray, array1Len, array2Len);
 			
 
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Something gone wrong while concatenating arrays", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Something gone wrong while splitting arrays",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 			
 		return resultingArray;
 	}
@@ -105,7 +123,10 @@ public class ArrayUtil {
 			System.arraycopy(array2, 0, resultingArray, array1Len, array2Len);
 			System.arraycopy(array3, 0, resultingArray, array1Len+array2Len, array3Len);
 		
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Something gone wrong while concatenating arrays", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Something gone wrong while splitting arrays",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 			
 		return resultingArray;
 	}
@@ -125,7 +146,10 @@ public class ArrayUtil {
 			System.arraycopy(array1, 0, resultingArray, 0, array1Len);
 			System.arraycopy(array2, 0, resultingArray, array1Len, array2Len);
 
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Something gone wrong while concatenating arrays", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Something gone wrong while splitting arrays",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 		
 		return resultingArray;
 	}
@@ -146,7 +170,10 @@ public class ArrayUtil {
 			System.arraycopy(array2, 0, resultingArray, array1Len, array2Len);
 			System.arraycopy(array3, 0, resultingArray, array1Len+array2Len, array3Len);
 			
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Something gone wrong while concatenating arrays", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Something gone wrong while splitting arrays",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 		
 		return resultingArray;
 	}
@@ -165,7 +192,10 @@ public class ArrayUtil {
 			System.arraycopy(array1, 0, resultingArray, 0, array1Len);
 			System.arraycopy(array2, 0, resultingArray, array1Len, array2Len);
 		
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Something gone wrong while concatenating arrays", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Something gone wrong while splitting arrays",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 		
 		return resultingArray;
 	}
@@ -185,7 +215,10 @@ public class ArrayUtil {
 			System.arraycopy(array2, 0, resultingArray, array1Len, array2Len);
 			System.arraycopy(array3, 0, resultingArray, array1Len+array2Len, array3Len);
 		
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Something gone wrong while concatenating arrays", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Something gone wrong while splitting arrays",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 			
 		return resultingArray;
 	}
@@ -204,7 +237,10 @@ public class ArrayUtil {
 			System.arraycopy(array1, 0, resultingArray, 0, array1Len);
 			System.arraycopy(array2, 0, resultingArray, array1Len, array2Len);
 		
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Something gone wrong while concatenating arrays", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Something gone wrong while splitting arrays",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 		
 		return resultingArray.toString();
 	}
@@ -224,7 +260,10 @@ public class ArrayUtil {
 			System.arraycopy(array2, 0, resultingArray, array1Len, array2Len);
 			System.arraycopy(array3, 0, resultingArray, array1Len+array2Len, array3Len);
 		
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Something gone wrong while concatenating arrays", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Something gone wrong while splitting arrays",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);;}
 			
 		return resultingArray.toString();
 	}

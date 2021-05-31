@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import components.JFileButton;
+import gui.message.MessageGUI;
 import secureNotepad.NotesManager;
 
 public class MainPanel extends JPanel{
@@ -38,7 +39,23 @@ public class MainPanel extends JPanel{
 		
 		
 		this.setLayout(new BorderLayout());
+		
+		// --------------- Dark MODE ----------------------------------------
+		
+		this.setBackground(new Color(41, 41, 41));
+		
+		this.refreshButton.setBackground(new Color(97, 102, 109));
+		this.refreshButton.setForeground(Color.WHITE);
+		
+		this.titleLabel.setOpaque(false);
+		this.titleIconLabel.setOpaque(false);
+		this.buttonsPanel.setOpaque(false);
+		
+		// -------------------------------------------------------------------
+		
 		this.titleLabel.setFont(new Font("Serif", Font.BOLD, 26));
+		this.titleLabel.setForeground(Color.WHITE);
+
 		this.titleIconLabel.setIcon(titleIcon);
 		this.refreshButton.setIcon(this.refreshIcon);
 		
@@ -46,6 +63,7 @@ public class MainPanel extends JPanel{
 		
 		this.refreshButton.setToolTipText("Repaint the files on the panel");
 		this.refreshButton.addActionListener(new RefreshFilesButtonCall());
+	
 		
 		associateFilesToButtons();
 		addButtonsToPanel();
@@ -54,10 +72,10 @@ public class MainPanel extends JPanel{
 		this.add(utils.InstancesUtil.getJPanelInstance(this.titleLabel, this.titleIconLabel), BorderLayout.NORTH);
 		this.add(buttonsPanel, BorderLayout.CENTER);
 		this.add(utils.InstancesUtil.getJPanelInstance(this.refreshButton), BorderLayout.SOUTH);
+
 		
 
 	}
-	
 	
 	
 	private void associateFilesToButtons() {
@@ -89,7 +107,7 @@ public class MainPanel extends JPanel{
 		}else {
 			JLabel noNotesLabel = new JLabel("[ 0 notes detected ], right click or press Crtl + N to create one");
 			noNotesLabel.setFont(new Font("Serif", Font.BOLD, 15));
-			noNotesLabel.setForeground(Color.BLUE);
+			noNotesLabel.setForeground(Color.RED);
 			buttonsPanel.add(noNotesLabel);
 		}
 	}
@@ -125,6 +143,8 @@ public class MainPanel extends JPanel{
 
 	}		
 		
+	
+
 	
 	// -------------------------- Listener private class ---------------------------------------
 	

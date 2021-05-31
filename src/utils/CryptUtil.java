@@ -54,7 +54,11 @@ public class CryptUtil {
 			KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
 			keyGenerator.init(n);
 			key = keyGenerator.generateKey();
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Error creating secret key for AES", e);}
+			
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error creating secret key for AES",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);}
 		
 	    return key;
 	}
@@ -68,7 +72,10 @@ public class CryptUtil {
 			salt = new byte[16];
 			sr.nextBytes(salt);
 
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Error generating salt", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error generating salt",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);}
 		
 		return salt;
 	}
@@ -82,7 +89,10 @@ public class CryptUtil {
 			iv = new byte[16];
 			new SecureRandom().nextBytes(iv);
 
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Error generating IV", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error generating IV",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);}
 		
 		return new IvParameterSpec(iv);
 	}
@@ -95,7 +105,10 @@ public class CryptUtil {
 			iv = new byte[16];
 			new SecureRandom().nextBytes(iv);
 
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Error generating IV", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error generating IV",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);}
 		
 		return iv;
 	}
@@ -109,8 +122,11 @@ public class CryptUtil {
 			KeySpec spec = new PBEKeySpec(password, salt, 66000, 256);
 			hashedKey = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
 		
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Error hashing the password", e);}
-		
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+															"Error hashing the password",
+															utils.MessageUtil.ROUNDED_DENIED,
+															e);}
+			
 		return hashedKey;
 	}
 	
@@ -122,7 +138,10 @@ public class CryptUtil {
 			KeySpec spec = new PBEKeySpec(password, salt, iterations, 256);
 			hashedKey = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
 		
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Error hashing the password", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error hashing the password",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);}
 		
 		return hashedKey;
 	}
@@ -140,7 +159,10 @@ public class CryptUtil {
 			KeySpec spec = new PBEKeySpec(password, salt, iterations, shaAlgo);
 			hashedKey = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
 		
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Error hashing the password", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error hashing the password",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);}
 		
 		return hashedKey;
 	}
@@ -167,38 +189,6 @@ public class CryptUtil {
 		
 	}
 	
-
-	
-	@Deprecated
-	public static String encryptWithECBMode(String plainText, SecretKey key) {
-		byte[] cipherText = null;
-		
-		try {
-			Cipher cipher = Cipher.getInstance(ECB_MODE);
-			cipher.init(Cipher.ENCRYPT_MODE, key);
-			cipherText = cipher.doFinal(plainText.getBytes());
-			
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Eror encrypting the note", e);}
-			
-		return encodeToBase64String(cipherText);
-	}
-	
-	@Deprecated
-	public static String decryptWithECBMode(byte[] cipherText, char[] password, byte[] IV, byte[] salt) {		
-		byte[] plainText = null;
-		
-		try {
-			
-			SecretKey key = hashKeyWithPKBDF2(password, salt);
-			
-			Cipher cipher = Cipher.getInstance(ECB_MODE);
-			cipher.init(Cipher.DECRYPT_MODE, key);
-			plainText = cipher.doFinal(decodeFromBase64Buffer(cipherText));
-			
-			}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Eror decrypting the note", e);}
-	
-		return plainText.toString();
-	}
 	
 	
 	
@@ -222,7 +212,11 @@ public class CryptUtil {
 			
 		    
 			
-		} catch(Exception e) {utils.ErrorUtil.showErrorMessage("Eror encrypting the note", e);}
+
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error encrypting the note",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);}
 		
 		password = null;
 		
@@ -249,7 +243,10 @@ public class CryptUtil {
 		    plainText = cipher.doFinal(decodedCiphertext);
 		    
 		   
-		} catch(Exception e) {utils.ErrorUtil.showErrorMessage("Error decrypting the note", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error decrypting the note",
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);}
 	
 		password = null;
 		
@@ -280,7 +277,10 @@ public class CryptUtil {
 			cipher.init(Cipher.ENCRYPT_MODE, key);
 			sealedObject = new SealedObject(object, cipher);
 
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Error encrypting object", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+															"Error decrypting the object " + object.getClass(),
+															utils.MessageUtil.ROUNDED_DENIED,
+															e);}
 			
 		return sealedObject;
 	}
@@ -296,7 +296,10 @@ public class CryptUtil {
 		cipher.init(Cipher.DECRYPT_MODE, key);
 		unsealObject = (Serializable) sealedObject.getObject(cipher);
 		    
-	}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Error decrypting object", e);}
+	}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+															"Error decrypting the object " + sealedObject.getClass(),
+															utils.MessageUtil.ROUNDED_DENIED,
+															e);}
 	
 	return unsealObject;
 	
@@ -312,7 +315,10 @@ public class CryptUtil {
 		    cipher.init(Cipher.ENCRYPT_MODE, key, iv);
 		    sealedObject = new SealedObject(object, cipher);
 
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Error encrypting object", e);}
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error decrypting the object " + object.getClass(),
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);}
 		
 	    return sealedObject;
 	}
@@ -328,8 +334,10 @@ public class CryptUtil {
 		    unsealObject = (Serializable) sealedObject.getObject(cipher);
 
 		 
-		}catch(Exception e) {utils.ErrorUtil.showErrorMessage("Error decrypting object", e);}   
-		
+		}catch(Exception e) {utils.MessageUtil.showErrorMessage("ERROR",
+																"Error decrypting the object " + sealedObject.getClass(),
+																utils.MessageUtil.ROUNDED_DENIED,
+																e);}
 	    return unsealObject;
 	}
 }

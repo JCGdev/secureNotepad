@@ -20,7 +20,7 @@ public class Main {
 			
 		} else {
 			Main.startConfigMenu();
-			utils.ErrorUtil.showErrorMessage("Config File couldn't be read, let's create one");
+			utils.MessageUtil.showMessage("Error","Config File couldn't be read, let's create one" , utils.MessageUtil.ROUNDED_ALERT);
 		}
 		
 

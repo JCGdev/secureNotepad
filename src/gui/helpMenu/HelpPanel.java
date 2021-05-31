@@ -1,6 +1,7 @@
 package gui.helpMenu;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JLabel;
@@ -11,7 +12,7 @@ public class HelpPanel extends JPanel {
 
 	
 	
-	private JLabel titleLabel = new JLabel("Help");
+	private JLabel titleLabel = new JLabel("Help window");
 	
 	private JTextArea helpMessage =  new JTextArea(	"[Developed by] --> 	JCGdev \n"
 											  + "[Github] -->		github.com/JCGdev \n"
@@ -23,6 +24,18 @@ public class HelpPanel extends JPanel {
 	public HelpPanel() {
 		
 		this.setLayout(new BorderLayout());
+		
+		// --------------- Dark MODE ----------------------------------------
+		
+		this.setBackground(new Color(41, 41, 41));
+		
+		this.titleLabel.setForeground(Color.WHITE);
+	
+		this.helpMessage.setBackground(new Color(97, 102, 109));
+		this.helpMessage.setForeground(Color.WHITE);
+	
+		// -----------------------------------------------------------------
+		
 		this.titleLabel.setFont(new Font("Serif", Font.BOLD, 26));
 		this.helpMessage.setEditable(false);
 		
