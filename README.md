@@ -30,8 +30,6 @@ When executing the program, an config file be created. It's stored in:
 
 ## TODO
 
-- Add dark mode
-
 - Improve functionality
 
 
