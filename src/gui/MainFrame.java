@@ -9,7 +9,7 @@ public class MainFrame extends JFrame{
 	private int windowHeigth = (utils.ToolkitUtil.getWindowHeigth())/2;
 	private int windowWidth = (utils.ToolkitUtil.getWindowWidth())/2;
 
-	private Image frameIcon = utils.ImageIOUtil.getInstance().getIconImage("/resources/icon.png");
+	private Image frameIcon = utils.ImageIOUtil.getInstance().getIconImage("/resources/images/icon.png");
 	
 	public MainFrame() {
 		

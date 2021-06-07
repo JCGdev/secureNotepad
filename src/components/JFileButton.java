@@ -15,7 +15,7 @@ import utils.Preferences;
 public class JFileButton extends JButton{
 	
 	private File associatedFile;
-	private ImageIcon buttonIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/encrypted_note.png");
+	private ImageIcon buttonIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/encrypted_note.png");
 	
 	public JFileButton(String name, File file) {
 		super(name);

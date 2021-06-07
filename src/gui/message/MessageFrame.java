@@ -13,7 +13,8 @@ public class MessageFrame extends JFrame {
 	
 	
 	private MessagePanel panel;
-	private Image icon = utils.ImageIOUtil.getInstance().getIconImage("/resources/message.png");
+	private Image icon = utils.ImageIOUtil.getInstance().getIconImage("/resources/images/message.png");
+	
 	
 	public MessageFrame(String title, String message, byte selectedIcon) {
 		
@@ -22,7 +23,6 @@ public class MessageFrame extends JFrame {
 		this.setBounds(xPos, yPos, this.windowWidth, this.windowHeigh);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		
 		panel = new MessagePanel(title, message, selectedIcon);
 
 		
@@ -31,6 +31,6 @@ public class MessageFrame extends JFrame {
 		
 	}
 	
-	
+
 	
 }

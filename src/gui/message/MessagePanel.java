@@ -17,18 +17,18 @@ public class MessagePanel extends JPanel{
 	String message;
 	byte mode;
 	
-	public static final byte ROUNDED_TICK = 0;
-	public static final byte ROUNDED_QUESTION = 1;
+	protected static final byte ROUNDED_TICK = 0;
+	protected static final byte ROUNDED_QUESTION = 1;
 	
-	public static final byte TRIANGLE_ALERT = 2;
-	public static final byte TRIANGLE_ALERT_2 = 3;
+	protected static final byte TRIANGLE_ALERT = 2;
+	protected static final byte TRIANGLE_ALERT_2 = 3;
 	
-	public static final byte ROUNDED_ALERT = 4;
-	public static final byte ROUNDED_DENIED = 5;
+	protected static final byte ROUNDED_ALERT = 4;
+	protected static final byte ROUNDED_DENIED = 5;
 	
-	private ImageIcon icon;
+	protected ImageIcon icon;
 	
-	private JLabel messageLabel;
+	protected JLabel messageLabel;
 	
 	public MessagePanel(String paramTitle, String paramMessage, byte paramIcon) {
 		
@@ -56,32 +56,32 @@ public class MessagePanel extends JPanel{
 	}
 	
 	
-	private void setChoosedIcon() {
+	protected void setChoosedIcon() {
 		
 		switch(this.mode) {
 		
 			case ROUNDED_TICK:
-				this.icon = utils.ImageIOUtil.getInstance().getIcon("/resources/round_tick.png");
+				this.icon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/round_tick.png");
 				break;
 				
 			case ROUNDED_QUESTION:
-				this.icon = utils.ImageIOUtil.getInstance().getIcon("/resources/question.png");
+				this.icon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/question.png");
 				break;
 				
 			case TRIANGLE_ALERT:
-				this.icon = utils.ImageIOUtil.getInstance().getIcon("/resources/triangle_alert.png");
+				this.icon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/triangle_alert.png");
 				break;
 				
 			case TRIANGLE_ALERT_2:
-				this.icon = utils.ImageIOUtil.getInstance().getIcon("/resources/triangle_alert_2.png");
+				this.icon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/triangle_alert_2.png");
 				break;
 				
 			case ROUNDED_ALERT:
-				this.icon = utils.ImageIOUtil.getInstance().getIcon("/resources/rounded_alert.png");
+				this.icon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/rounded_alert.png");
 				break;
 				
 			case ROUNDED_DENIED:
-				this.icon = utils.ImageIOUtil.getInstance().getIcon("/resources/rounded_denied.png");
+				this.icon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/rounded_denied.png");
 				break;
 				
 		

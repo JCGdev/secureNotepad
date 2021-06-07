@@ -1,11 +1,16 @@
 package gui.message;
 
+import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 
 public class MessageGUI {
 
-	private static MessageFrame frame;
+	// icons 
 	
 	public static final byte ROUNDED_TICK = 0;
 	public static final byte ROUNDED_QUESTION = 1;
@@ -16,14 +21,19 @@ public class MessageGUI {
 	public static final byte ROUNDED_ALERT = 4;
 	public static final byte ROUNDED_DENIED = 5;
 	
+	
 	public MessageGUI() {}
+	
 	
 	public static void startGUI(String title, String message, byte selectedIcon) {
 		
-		frame = new MessageFrame(title, message, selectedIcon);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	
+			MessageFrame frame = new MessageFrame(title, message, selectedIcon);
+			frame.setVisible(true);
+			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			
+			
 	}
+	
+
 	
 }

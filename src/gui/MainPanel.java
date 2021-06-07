@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.io.File;
+import java.io.FileInputStream;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,15 +26,15 @@ public class MainPanel extends JPanel{
 	private JLabel titleLabel = new JLabel("SecureNotepad");
 	private JLabel titleIconLabel = new JLabel();
 	
-	private static JPanel buttonsPanel = new JPanel();
+	private JPanel buttonsPanel = new JPanel();
 	
 	private static File[] fileNotes = NotesManager.getNotesInPath();
 	private static JFileButton[] buttons = null;
 	
 	private JButton refreshButton = new JButton("Refresh");
 	
-	private ImageIcon titleIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/title.png");
-	private ImageIcon refreshIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/refresh.png");
+	private ImageIcon titleIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/title.png");
+	private ImageIcon refreshIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/refresh.png");
 	
 	public MainPanel() {
 		
@@ -54,6 +55,8 @@ public class MainPanel extends JPanel{
 		// -------------------------------------------------------------------
 		
 		this.titleLabel.setFont(new Font("Serif", Font.BOLD, 26));
+		
+		
 		this.titleLabel.setForeground(Color.WHITE);
 
 		this.titleIconLabel.setIcon(titleIcon);

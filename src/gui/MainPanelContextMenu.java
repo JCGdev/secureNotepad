@@ -20,9 +20,9 @@ public class MainPanelContextMenu extends JPopupMenu {
 	JMenuItem refreshMenuItem = new JMenuItem("Refresh");
 	JMenuItem settingsMenuItem = new JMenuItem("Settings");
 	
-	private ImageIcon noteIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/note.png");
-	private ImageIcon refreshIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/refresh.png");
-	private ImageIcon settingsIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/cmd.png");
+	private ImageIcon noteIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/note.png");
+	private ImageIcon refreshIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/refresh.png");
+	private ImageIcon settingsIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/cmd.png");
 
 
 	public MainPanelContextMenu() {

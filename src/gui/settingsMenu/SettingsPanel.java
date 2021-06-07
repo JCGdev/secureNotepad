@@ -29,7 +29,7 @@ public class SettingsPanel extends JPanel {
 	private JFileChooser folderChooser = new JFileChooser();
 	private JLabel notesPathLabel = new JLabel("Notes Path");
 	private JButton notesPathChooserButton = new JButton("Choose folder");
-	private ImageIcon chooserButtonIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/folder.png");
+	private ImageIcon chooserButtonIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/folder.png");
 	private String notesPath;
 	
 	

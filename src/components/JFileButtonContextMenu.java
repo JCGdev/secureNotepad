@@ -8,6 +8,7 @@ import java.io.File;
 import javax.swing.JPopupMenu;
 
 import gui.StaticMainPanel;
+import utils.MessageUtil;
 import utils.Preferences;
 
 import javax.swing.ImageIcon;
@@ -22,9 +23,9 @@ public class JFileButtonContextMenu extends JPopupMenu {
 	JMenuItem deleteNoteItem = new JMenuItem("delete");
 	JMenuItem renameFileItem = new JMenuItem("rename");
 	
-	private ImageIcon optionsIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/settings2.png");
-	private ImageIcon deleteIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/bin.png");
-	private ImageIcon renameIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/rename.png");
+	private ImageIcon optionsIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/settings2.png");
+	private ImageIcon deleteIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/bin.png");
+	private ImageIcon renameIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/rename.png");
 	
 	public JFileButtonContextMenu(File file){
 		
@@ -70,8 +71,8 @@ public class JFileButtonContextMenu extends JPopupMenu {
 	
 				private class DeleteNoteCall implements ActionListener{
 				
-					final int YES = 0;
-					final int NO = 1;
+					private final int YES = 0;
+					private final int NO = 1;
 					
 					
 					public DeleteNoteCall() {}
@@ -79,13 +80,15 @@ public class JFileButtonContextMenu extends JPopupMenu {
 					
 					public void actionPerformed(ActionEvent e) {
 						
-						int answer = JOptionPane.showConfirmDialog(null, "Are you sure?, this action cannot be undone", 
-													"Delete the note?", JOptionPane.YES_NO_OPTION);
+						//int answer = JOptionPane.showConfirmDialog(null, "Are you sure?, this action cannot be undone", 
+						//							"Delete the note?", JOptionPane.YES_NO_OPTION);
+						
+						int answer = utils.MessageUtil.showConfirmMessage("Are you sure", "This action cannot be undone");
 						
 							if (answer == YES) {
 							
 								utils.FileIOUtil.deleteFile(associatedFile.getAbsolutePath());
-								JOptionPane.showMessageDialog(null, "Note deleted");
+								utils.MessageUtil.showMessage("SUCCEEDED", "Note deleted", MessageUtil.ROUNDED_TICK);
 								StaticMainPanel.getInstance().refreshNotes();
 							
 							} 
@@ -110,23 +113,28 @@ public class JFileButtonContextMenu extends JPopupMenu {
 									
 						String nameToRename = JOptionPane.showInputDialog("Enter the desired name");
 						
-						if(utils.OSUtil.isUnix()) {
-							utils.FileIOUtil.renameFile(associatedFile.getAbsolutePath(),
+						if (nameToRename != null) {
+							if(utils.OSUtil.isUnix()) {
+								utils.FileIOUtil.renameFile(associatedFile.getAbsolutePath(),
 														Preferences.NOTES_DIR_PATH + "/" + nameToRename);
 							
-							JOptionPane.showMessageDialog(null, "Note renamed!");
-							StaticMainPanel.getInstance().refreshNotes();
+								utils.MessageUtil.showMessage("SUCCEEDED", "Note renamed", MessageUtil.ROUNDED_TICK);
+								StaticMainPanel.getInstance().refreshNotes();
 							
-						}else if(utils.OSUtil.isWindows()) {
-							utils.FileIOUtil.renameFile(associatedFile.getAbsolutePath(),
-									Preferences.NOTES_DIR_PATH + "\\" + nameToRename);
+							}else if(utils.OSUtil.isWindows()) {
+								utils.FileIOUtil.renameFile(associatedFile.getAbsolutePath(),
+										Preferences.NOTES_DIR_PATH + "\\" + nameToRename);
 						
-							JOptionPane.showMessageDialog(null, "Note renamed!");
-							StaticMainPanel.getInstance().refreshNotes();
+								utils.MessageUtil.showMessage("SUCCEEDED", "Note renamed!", MessageUtil.ROUNDED_TICK);
+								StaticMainPanel.getInstance().refreshNotes();
+							}
 						}
-							
+
+					
 						
 					}
+					
+					
 								
 				}
 

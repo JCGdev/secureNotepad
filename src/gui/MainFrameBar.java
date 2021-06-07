@@ -25,9 +25,9 @@ public class MainFrameBar extends JMenuBar {
 	private JMenuItem settingsMenuItem;
 	private JMenuItem helpMenuItem;
 	
-	private ImageIcon noteIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/note.png");
-	private ImageIcon settingsIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/cmd.png");
-	private ImageIcon helpIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/help.png");
+	private ImageIcon noteIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/note.png");
+	private ImageIcon settingsIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/cmd.png");
+	private ImageIcon helpIcon = utils.ImageIOUtil.getInstance().getIcon("/resources/images/help.png");
 	
 	public MainFrameBar() {
 		

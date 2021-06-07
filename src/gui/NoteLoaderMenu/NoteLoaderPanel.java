@@ -263,7 +263,7 @@ public class NoteLoaderPanel extends JPanel{
 						utils.MessageUtil.showMessage("ERROR","Password doesn't match", utils.MessageUtil.ROUNDED_DENIED);
 					}
 				} else {
-					utils.MessageUtil.showMessage("Error", "Provided data can't be blank", utils.MessageUtil.ROUNDED_DENIED);
+					utils.MessageUtil.showMessage("ERROR", "Provided data can't be blank", utils.MessageUtil.ROUNDED_DENIED);
 				}
 					
 			}
@@ -303,7 +303,7 @@ public class NoteLoaderPanel extends JPanel{
 						utils.MessageUtil.showMessage("ERROR","Password doesn't match", utils.MessageUtil.ROUNDED_DENIED);
 					}
 				} else {
-					utils.MessageUtil.showMessage("Error", "Provided data can't be blank", utils.MessageUtil.ROUNDED_DENIED);
+					utils.MessageUtil.showMessage("ERROR", "Provided data can't be blank", utils.MessageUtil.ROUNDED_DENIED);
 				}
 						
 			}
